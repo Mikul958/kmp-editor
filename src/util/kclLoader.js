@@ -173,15 +173,20 @@ class KclLoader
 						break
 
 					case 2:
-						highlighted = data.f.isWall && normal.dot(new Vec3(0, 0, 1)) > 0.9
+						highlighted = collisionFlags & 0x4000
 						break
 
 					case 3:
 						highlighted = data.f.isWall && collisionFlags & 0x8000
 						break
 					
-					case 6:
-						highlighted = data.f.isWall && normal.dot(new Vec3(0, 0, 1)) > 0
+					case 4:
+						highlighted = data.f.isWall && normal.dot(new Vec3(0, 0, 1)) > 0.85
+						break
+					
+					case 5:
+						const up = new Vec3(0, 0, 1)
+						highlighted = data.f.isWall && normal.dot(up) > 0 && normal.dot(up) <= 0.85
 						break
 				}
 

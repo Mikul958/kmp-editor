@@ -263,11 +263,12 @@ class MainWindow
 		[
 			{ str: "None", value: 0 },
 			{ str: "Trickable Road", value: 1 },
-			{ str: "Horizontal Walls", value: 2 },
+			{ str: "Reject Road", value: 2 },
 			{ str: "Barrel Roll Walls", value: 3 },
-			{ str: "Custom Flag", value: 4 },
-			{ str: "Triangle Index", value: 5 },
-			{ str: "Sloped Walls", value: 6 },
+			{ str: "Horizontal Walls", value: 4 },
+			{ str: "Sloped Walls", value: 5 },
+			{ str: "Custom Flag", value: 6 },
+			{ str: "Triangle Index", value: 7 },
 		]
 		panel.addSelectionDropdown(kclGroup, "Highlight", this.cfg.kclHighlighter, hlOptions, true, false, (x) => { this.cfg.kclHighlighter = x; this.refreshPanels() })
 	
@@ -278,7 +279,7 @@ class MainWindow
 			return x
 		}
 		
-		if (this.cfg.kclHighlighter === 4)
+		if (this.cfg.kclHighlighter === 6)
 		{	
 			let flagOptions = [{ str: "None", value: -1 }]
 			for (let i = 0; i <= 0x1f; i++)
@@ -291,7 +292,7 @@ class MainWindow
 			panel.addSelectionNumericInput(kclGroup, "Wheel Depth", 	 -1, 0x3,  this.hl.intensity, 		1.0, 0.0, true, false, (x) => { this.hl.intensity = x	 	}, onBlur)
 			panel.addSelectionNumericInput(kclGroup, "Collision Effect", -1, 0x7,  this.hl.collisionEffect, 1.0, 0.0, true, false, (x) => { this.hl.collisionEffect = x }, onBlur)
 		}
-		else if (this.cfg.kclHighlighter === 5)
+		else if (this.cfg.kclHighlighter === 7)
 		{
 			panel.addSelectionNumericInput(kclGroup, "Tri Index Min", -1, 0xffff,  this.cfg.kclTriIndex[0], 1.0, 1.0, true, false, (x) => { this.cfg.kclTriIndex[0] = x }, onBlur)
 			panel.addSelectionNumericInput(kclGroup, "Tri Index Max", -1, 0xffff,  this.cfg.kclTriIndex[1], 1.0, 1.0, true, false, (x) => { this.cfg.kclTriIndex[1] = x }, onBlur)
