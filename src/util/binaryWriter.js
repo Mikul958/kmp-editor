@@ -1,6 +1,3 @@
-const { Vec3 } = require("../math/vec3.js")
-
-
 class BinaryWriter
 {
 	constructor(bytes)

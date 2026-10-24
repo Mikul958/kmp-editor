@@ -1,5 +1,5 @@
 const { GLProgram } = require("../gl/shader.js")
-const { GfxScene, GfxCamera, GfxMaterial, GfxModel, GfxNodeRenderer, GfxNodeRendererTransform } = require("../gl/scene.js")
+const { GfxScene, GfxCamera, GfxMaterial, GfxNodeRenderer, GfxNodeRendererTransform } = require("../gl/scene.js")
 const { ViewerStartPoints } = require("./viewerStartPoints.js")
 const { ViewerEnemyPaths } = require("./viewerEnemyPaths.js")
 const { ViewerItemPaths } = require("./viewerItemPaths.js")

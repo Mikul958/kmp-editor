@@ -1,11 +1,11 @@
-const { ipcRenderer, screen, shell } = require("electron")
+const { ipcRenderer, shell } = require("electron")
 const remote = require("@electron/remote")
 const fs = require("fs")
+
 const { Viewer } = require("./viewer/viewer.js")
 const { ModelBuilder } = require("./util/modelBuilder.js")
 const { KmpData } = require("./util/kmpData.js")
 const { KclLoader, collisionTypeData } = require("./util/kclLoader.js")
-const { Vec3 } = require("./math/vec3.js")
 
 
 let gMainWindow = null

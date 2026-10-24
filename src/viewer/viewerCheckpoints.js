@@ -1,4 +1,4 @@
-const { GfxScene, GfxCamera, GfxMaterial, GfxModel, GfxNodeRenderer, GfxNodeRendererTransform } = require("../gl/scene.js")
+const { GfxScene, GfxNodeRenderer, GfxNodeRendererTransform } = require("../gl/scene.js")
 const { ModelBuilder } = require("../util/modelBuilder.js")
 const { Vec3 } = require("../math/vec3.js")
 const { Mat4 } = require("../math/mat4.js")

@@ -1,4 +1,3 @@
-const { Vec3 } = require("../math/vec3.js")
 const { Mat4 } = require("../math/mat4.js")
 
 

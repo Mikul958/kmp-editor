@@ -1,5 +1,3 @@
-
-
 class ViewerTrackInformation
 {
 	constructor(window, viewer, data)
