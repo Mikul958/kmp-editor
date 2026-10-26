@@ -183,8 +183,9 @@ class ViewerCheckpoints
 			{ this.window.setNotSaved(); selectedPoints[i].respawnNode = this.data.respawnPoints.nodes[x] })
 		
 		panel.addText(selectionGroup, "<strong>Type 0:</strong> Lap Counter")
-		panel.addText(selectionGroup, "<strong>Type 1-254:</strong> Key Checkpoints")
+		panel.addText(selectionGroup, "<strong>Type 1-127:</strong> Key Checkpoints")
 		panel.addText(selectionGroup, "<strong>Type 255:</strong> Regular Checkpoint")
+		panel.addText(selectionGroup, "⚠️ Types 128-254 will update your KCP counter, but do not influence checkpoint loading or lap counts. Using them is not recommended.")
 	}
 	
 	
@@ -867,7 +868,7 @@ class ViewerCheckpoints
 				point.renderer[which]
 					.setTranslation(point.pos[which])
 					.setScaling(new Vec3(scale, scale, scale))
-					.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 1] : point.type != 0xff ? [1, 0, 1, 1] : [0, 0, 1, 1])
+					.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 1] : point.type == 0xff ? [0, 0, 1, 1] : point.type < 0x80 ? [1, 0, 1, 1] : [1, 0.5, 0, 1])
 					.setEnabled(point.isRendered || prevIsRendered)
 				
 				for (let n = 0; n < point.next.length; n++)
@@ -899,7 +900,7 @@ class ViewerCheckpoints
 					/*
 					point.rendererOutgoingQuads[n]
 						.setTranslation(new Vec3(0, 0, this.zTop))
-						.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 0.6] : point.type != 0xff ? [1, 0.25, 1, 0.6] : [0, 0.25, 1, 0.6])
+						.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 0.6] : point.type == 0xff ? [0, 0.25, 1, 0.6] : point.type < 0x80 ? [1, 0.25, 1, 0.6] : [1, 0.75, 0, 0.6])
 						.setEnabled(true)
 					*/
 				}
@@ -909,17 +910,17 @@ class ViewerCheckpoints
 			
 			setupPathMatrices(point.rendererCheckbar, barScale, point.pos[0], point.pos[1])
 			point.rendererCheckbar
-				.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 1] : point.type != 0xff ? [1, 0, 1, 1] : [0, 0, 1, 1])
+				.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 1] : point.type == 0xff ? [0, 0, 1, 1] : point.type < 0x80 ? [1, 0.5, 1, 1] : [1, 0.5, 0, 1])
 				.setEnabled(point.isRendered || prevIsRendered)
 			
 			setupPanelMatrices(point.rendererCheckpanel, point.pos[0], point.pos[1])
 			point.rendererCheckpanel
-				.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 0.6] : point.type != 0xff ? [1, 0.25, 1, 0.6] : [0, 0.25, 1, 0.6])
+				.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 0.6] : point.type == 0xff ? [0, 0.25, 1, 0.6] : point.type < 0x80 ? [1, 0.25, 1, 0.6] : [1, 0.75, 0, 0.6])
 				.setEnabled(point.isRendered || prevIsRendered)
 			
 			setupArrowMatrices(point.rendererDirArrow, barScale, point.pos[0], point.pos[1])
 			point.rendererDirArrow
-				.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 1] : point.type != 0xff ? [1, 0, 1, 1] : [0, 0, 1, 1])
+				.setDiffuseColor(point.type == 0 ? [1, 0.5, 1, 1] : point.type == 0xff ? [0, 0, 1, 1] : point.type < 0x80 ? [1, 0.5, 1, 1] : [1, 0.5, 0, 1])
 				.setEnabled(this.viewer.cfg.checkpointsEnableDirectionArrows && (point.isRendered || prevIsRendered))
 			
 			let respawnNode = point.respawnNode
